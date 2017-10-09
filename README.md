@@ -40,12 +40,12 @@ JS
 2. Game starts
 3. Timer starts 60 (61) - 0
 4. Images appear at random
-5. Add active class to circle, add image, add click event
+5. Add active class to (li) circle, add image, add click event
 6. Remove active class, image and click event once a specified time has lapsed (Set timeout)
-7. User clicks on 'active' circle, 'play audio depending on character picked'
-8. If active circle is clicked before timeout, update score by 10
-9. If active circle is not clicked before timeout decrease score by 10
-10. Increase the intervals each time the loop runs
+7. User clicks on 'active' (li) circle, 'play audio depending on character picked'
+8. If 'active' (li) circle is clicked before timeout, update score by 10
+9. If 'active' (li) circle is not clicked before timeout decrease score by 10
+10. Increase the intervals each time the loop runs by 2000
 11. Display play again
 12. On click Reset game
 
