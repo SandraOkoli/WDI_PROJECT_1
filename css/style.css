@@ -24,3 +24,8 @@ li {
 .active {
   background-color: red;
 }
+
+.timer-display {
+  text-align: center;
+  font-size: 60px;
+}

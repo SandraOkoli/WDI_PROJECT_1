@@ -4,43 +4,55 @@ $(setup);
 let $li = null;
 let $interval = null;
 let $timer = null;
+const $startGame =('button');
+const $timerDisplay =('.div');
 
-
+//Set
 function setup() {
   $li = $('li');
   getRandom();
-
 }
-//
+//Get random list items
 function getRandom(){
   const list = $li[Math.floor(Math.random()*$li.length)];
-  console.log(list);
-  // $interval = setInterval(2000);
-  // console.log($interval);
-
-  active(list);
+  mole(list);
 }
+//Assign mole with an active class, which highlights in red
+function mole(list){
+  const showMole = $(list).addClass('active');
+  console.log(showMole);
 
-function active(list){
-  const $mole = $(list).addClass('active');
-  console.log($mole);
-
-  setSpeed(list);
+  whackMole(showMole);
 }
+// Click on mole when show mole is active(red))
+function whackMole(showMole) {
+  $(showMole).one('click', () => {
+    console.log('clicked');
+  });
+}
+    //If true then removeClass
+    // if(showMole){
+    //   const removeMole = $(list).removeClass('active')
+    // } else {
+    //
+    // }
 
-// function setSpeed(list){
-//   $interval = setInterval(2000);
-//   console.log()
-// }
-//create Loop
 
 
-// function active(){
-//   const div = $('div').addClass('active');
-//   console.log(div);
-// }
-
-// function interval(){
-//   const
-//
-// }
+  //Function to start the game(Set interval, timer and on click)
+  // function startGame() {
+  //   $interval = setInterval(countdown, 2000);
+  //   getRandom();
+  //   $startGame.on('click');
+  // }
+  //
+  // function countdown() {
+  //   $timer--;
+  //   $timerDisplay.html($timer);
+  //   console.log($timer);
+  //
+  //   if ($timer <= 0) {
+  //     clearInterval($interval);
+  //     // gameOver();
+  //   }
+  // }
