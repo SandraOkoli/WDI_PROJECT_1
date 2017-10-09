@@ -14,45 +14,64 @@ function setup() {
 }
 //Get random list items
 function getRandom(){
-  const list = $li[Math.floor(Math.random()*$li.length)];
-  mole(list);
+  const randomList = $li[Math.floor(Math.random()*$li.length)];
+  displayMole(randomList);
 }
-//Assign mole with an active class, which highlights in red
-function mole(list){
-  const showMole = $(list).addClass('active');
-  console.log(showMole);
+//Add active class(red) to show mole
+function displayMole(randomList){
+  const showMole = $(randomList).addClass('mole');
+  $(showMole).one('click', whackMole);
 
-  whackMole(showMole);
+  //remove mole and click event after 1 second
+  setTimeout(function() {
+    $(randomList).removeClass('mole');
+    $(randomList).off('click');
+  },1500);
 }
-// Click on mole when show mole is active(red))
-function whackMole(showMole) {
-  $(showMole).one('click', () => {
-    console.log('clicked');
-  });
+
+function whackMole() {
+  $(this).removeClass('mole');
+
 }
-    //If true then removeClass
-    // if(showMole){
-    //   const removeMole = $(list).removeClass('active')
-    // } else {
-    //
-    // }
+//Set Timeout
+
+
+//
+// function whackMole(){
+//
+// }
+//     //Remove Class
+//   / whackMole(showMole);
+// }
+// // Click on mole when show mole is active(red))
+// function whackMole(showMole) {
+//   $(showMole).one('click', () => {
+//     console.log('clicked');
+//     //If mole is clicked on then removeClass
+//     if (true)
+//      const removeMole= $(list).removeClass('active');{
+//     //If mole is not clicked on
+//      }else
+//
+//   });
+// }
 
 
 
-  //Function to start the game(Set interval, timer and on click)
-  // function startGame() {
-  //   $interval = setInterval(countdown, 2000);
-  //   getRandom();
-  //   $startGame.on('click');
-  // }
-  //
-  // function countdown() {
-  //   $timer--;
-  //   $timerDisplay.html($timer);
-  //   console.log($timer);
-  //
-  //   if ($timer <= 0) {
-  //     clearInterval($interval);
-  //     // gameOver();
-  //   }
-  // }
+//Function to start the game(Set interval, timer and on click)
+// function startGame() {
+//   $interval = setInterval(countdown, 2000);
+//   getRandom();
+//   $startGame.on('click');
+// }
+//
+// function countdown() {
+//   $timer--;
+//   $timerDisplay.html($timer);
+//   console.log($timer);
+//
+//   if ($timer <= 0) {
+//     clearInterval($interval);
+//     // gameOver();
+//   }
+// }
