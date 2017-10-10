@@ -4,8 +4,7 @@ $(setup);
 let $li = null;
 let interval = null;
 let counter = 61;
-// let countDown = null;
-
+let score = 0;
 
 //Create setup function
 // The statements in the setup() function
@@ -20,7 +19,7 @@ function startGame() {
 }
 function timer(){
   counter --;
-  $('.timer-display').html(counter);
+  $('.display-timer').html(counter);
 
   if (counter===0){
     clearInterval(interval);
@@ -31,8 +30,7 @@ function timer(){
 
 function reset() {
   counter = 61;
-  $('.timer-display').html('0');
-  // $('.start-button').html('Play Again?');
+  $('.display-timer').html('0');
 }
 
 //Get random list items
@@ -51,16 +49,24 @@ function displayMole(randomList){
     $(randomList).off('click');
   },1500);
 }
-//Remove mole once mole is hit
+//Remove mole once mole is clicked within 1 sec
 function whackMole() {
   $(this).removeClass('mole');
-
+  updateScore();
 }
 
-// 8. If 'active' (li) circle is clicked before timeout, update score by 10
-// 9. If 'active' (li) circle is not clicked before timeout decrease score by 10
-
-function updateScore(){
+function updateScore() {
+  // If mole is clicked before timeout, update score by 10
+  if (whackMole){
+    score+=10;
+    console.log(score);
+    $('.display-score').html(score);
+    //else decrease score by 5
+  }
+  if (!whackMole) {
+    score-=5;
+    console.log('-5 points');
+    $('.display-score').html(score).addClass('missed');
+  }
 
 }
-//intervalSetup

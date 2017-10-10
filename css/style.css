@@ -28,9 +28,10 @@ li {
   background-color: red;
 }
 
-.timer-display {
+.display-timer, .display-score {
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
+  padding: 20px;
 }
 
 
@@ -39,4 +40,8 @@ li {
   height: 100px;
   border-radius: 50px;
   text-align: center;
+}
+
+.missed {
+  color: red;
 }
