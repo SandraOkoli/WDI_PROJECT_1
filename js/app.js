@@ -13,6 +13,7 @@ function setup() {
   $li = $('li');
 
   $('.start-button').on('click', startGame);
+
 }
 function startGame() {
   interval = setInterval(timer, 2000);
@@ -26,6 +27,7 @@ function timer(){
     reset();
   }
   getRandom();
+
 }
 
 function reset() {
@@ -37,6 +39,7 @@ function reset() {
 function getRandom(){
   const randomList = $li[Math.floor(Math.random()*$li.length)];
   displayMole(randomList);
+  // addMoreMoles();
 }
 //Add active class(red) to show mole
 function displayMole(randomList){
@@ -45,8 +48,17 @@ function displayMole(randomList){
 
   //remove mole and click event after 1 second
   setTimeout(function() {
-    $(randomList).removeClass('mole');
     $(randomList).off('click');
+
+    if ($(randomList).hasClass('mole')) {
+      // user missed
+
+      $(randomList).removeClass('mole');
+      if (score !== 0) {
+        score = score - 5;
+        $('.display-score').html(score);
+      }
+    }
   },1500);
 }
 //Remove mole once mole is clicked within 1 sec
@@ -64,9 +76,13 @@ function updateScore() {
     //else decrease score by 5
   }
   if (!whackMole) {
-    score-=5;
-    console.log('-5 points');
     $('.display-score').html(score).addClass('missed');
   }
 
+}
+function addMoreMoles(){
+  if (score===20) {
+    $('ul').append('<li></li>');
+    console.log('addmole');
+  }
 }
