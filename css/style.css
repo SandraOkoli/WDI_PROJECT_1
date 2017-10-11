@@ -39,6 +39,15 @@ li {
   text-align: center;
 }
 
+.select-mole {
+  text-align: center;
+  padding-right: 50px;
+}
+
+.selected {
+  border: 2px solid red;
+}
+
 .mole {
   background-image: url("http://is4.mzstatic.com/image/thumb/Purple62/v4/c4/c5/c6/c4c5c6ad-1c22-5316-bd22-e0797b155884/source/512x512bb.jpg");
   background-repeat: no-repeat;
@@ -46,13 +55,14 @@ li {
 }
 
 .mole-1 {
-  background-image: url(../images/kim_k.jpg);
-}
-
-.mole-2 {
-  background: yellow;
+  background-image: url("http://data.whicdn.com/images/246094008/large.png");
 }
 
 .missed {
   color: red;
+}
+
+img {
+  width: 250px;
+  height: 250px;
 }

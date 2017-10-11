@@ -8,6 +8,7 @@ let score = 0;
 let base = 1;
 let numberOfUserClicks = 0;
 let level = 1;
+let moleChoice = null;
 
 // const $start = $('.start-button');
 
@@ -15,16 +16,20 @@ let level = 1;
 function setup() {
   $('.start-button').on('click', startGame);
   $('.levels').hide();
-  // selectMole();
+  selectMole();
 }
-// function selectMole(){
-//   $('.start-button').hide();
-//   $('.mole-1').on('click');
-//   console.log('clicked');
-//
-// }
+
 // Generate board at start game starting from one
+function selectMole(){
+  $('.choose-characters img').on('click', function(){
+    $('.choose-characters img').removeClass('selected');
+    moleChoice = $(this).attr('class');
+    console.log(moleChoice);
+    $(`.${moleChoice}`).addClass('selected');
+  });
+}
 function startGame() {
+  
   $('.start-button').hide();
   $('.select-mole').hide();
   $('.levels').show();
@@ -67,11 +72,13 @@ function reset() {
 function getRandom(){
   const randomList = $lis[Math.floor(Math.random()*$lis.length)];
   displayMole(randomList);
-
 }
 //Add m
 function displayMole(randomList){
   const showMole = $(randomList).addClass('mole');
+  // if ($('.mole-1').on('click', function(){
+  //   $('mole').addClass('mole-1');
+  // }
   $(showMole).one('click', whackMole);
 
 
