@@ -15,21 +15,26 @@ function setup() {
   $('.start-button').on('click', startGame);
 }
 
+// Generate board at start game starting from one
 function startGame() {
   generateBoard();
 }
-
+//Create board multiply base by 100px
 function generateBoard() {
   $('ul').css({
     'width': `${base * 100}px`,
     'height': `${base * 100}px`
   });
+  // multiply base by base and incretment each iteration  (intial 1 x 1)
+  // 2 x 1 = 2
+  // 2 x 2 = 4
+  // 4 x
 
   for (var i = 0; i < base * base; i++) {
     $('ul').append('<li></li>');
   }
 
-  $lis      = $('li');
+  $lis = $('li');
   interval = setInterval(timer, 2000);
 }
 
@@ -46,7 +51,7 @@ function timer(){
 
 function reset() {
   counter = 61;
-  $('.display-timer').html('0');
+  $('.display-timer').html('Time: 0');
 }
 
 //Get random list items
@@ -69,7 +74,7 @@ function displayMole(randomList){
       $(randomList).removeClass('mole');
       if (score !== 0) {
         score = score - 5;
-        $('.display-score').html(score);
+        $('.display-score').html(score).addClass('missed');
       }
     }
   },1500);
@@ -95,13 +100,9 @@ function updateScore() {
   if (whackMole){
     score+=10;
     console.log(score);
-    $('.display-score').html(score);
+    $('.display-score').html(score).removeClass('missed');
     //else decrease score by 5
   }
-  if (!whackMole) {
-    $('.display-score').html(score).addClass('missed');
-  }
-
 }
 
 // Increasing grid and mole logic
