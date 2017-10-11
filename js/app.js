@@ -8,6 +8,7 @@ let score = 0;
 let base = 1;
 let numberOfUserClicks = 0;
 
+
 //Create setup function
 // The statements in the setup() function
 // execute once when the program begins
@@ -26,9 +27,6 @@ function generateBoard() {
     'height': `${base * 100}px`
   });
   // multiply base by base and incretment each iteration  (intial 1 x 1)
-  // 2 x 1 = 2
-  // 2 x 2 = 4
-  // 4 x
 
   for (var i = 0; i < base * base; i++) {
     $('ul').append('<li></li>');
@@ -58,9 +56,9 @@ function reset() {
 function getRandom(){
   const randomList = $lis[Math.floor(Math.random()*$lis.length)];
   displayMole(randomList);
-  // addMoreMoles();
+
 }
-//Add active class(red) to show mole
+//Add m
 function displayMole(randomList){
   const showMole = $(randomList).addClass('mole');
   $(showMole).one('click', whackMole);
@@ -81,6 +79,23 @@ function displayMole(randomList){
 }
 //Remove mole once mole is clicked within 1 sec
 function whackMole() {
+
+
+  $(this).removeClass('mole');
+  updateScore();
+  clicksPerBase();
+}
+
+function updateScore() {
+  // If mole is clicked before timeout, update score by 10
+  if (whackMole){
+    score+=10;
+    console.log(score);
+    $('.display-score').html(score).removeClass('missed');
+  }
+}
+
+function clicksPerBase() {
   numberOfUserClicks++;
 
   if (numberOfUserClicks === base) {
@@ -90,19 +105,4 @@ function whackMole() {
     base++;
     generateBoard();
   }
-
-  $(this).removeClass('mole');
-  updateScore();
 }
-
-function updateScore() {
-  // If mole is clicked before timeout, update score by 10
-  if (whackMole){
-    score+=10;
-    console.log(score);
-    $('.display-score').html(score).removeClass('missed');
-    //else decrease score by 5
-  }
-}
-
-// Increasing grid and mole logic
