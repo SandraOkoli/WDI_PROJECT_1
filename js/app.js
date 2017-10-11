@@ -1,23 +1,38 @@
 $(setup);
 
 //Declare global variables
-let $li = null;
+let $lis = null;
 let interval = null;
 let counter = 61;
 let score = 0;
+let base = 1;
+let numberOfUserClicks = 0;
 
 //Create setup function
 // The statements in the setup() function
 // execute once when the program begins
 function setup() {
-  $li = $('li');
-
   $('.start-button').on('click', startGame);
-
 }
+
 function startGame() {
+  generateBoard();
+}
+
+function generateBoard() {
+  $('ul').css({
+    'width': `${base * 100}px`,
+    'height': `${base * 100}px`
+  });
+
+  for (var i = 0; i < base * base; i++) {
+    $('ul').append('<li></li>');
+  }
+
+  $lis      = $('li');
   interval = setInterval(timer, 2000);
 }
+
 function timer(){
   counter --;
   $('.display-timer').html(counter);
@@ -27,7 +42,6 @@ function timer(){
     reset();
   }
   getRandom();
-
 }
 
 function reset() {
@@ -37,7 +51,7 @@ function reset() {
 
 //Get random list items
 function getRandom(){
-  const randomList = $li[Math.floor(Math.random()*$li.length)];
+  const randomList = $lis[Math.floor(Math.random()*$lis.length)];
   displayMole(randomList);
   // addMoreMoles();
 }
@@ -49,10 +63,9 @@ function displayMole(randomList){
   //remove mole and click event after 1 second
   setTimeout(function() {
     $(randomList).off('click');
-
+    //If Random list has class
     if ($(randomList).hasClass('mole')) {
       // user missed
-
       $(randomList).removeClass('mole');
       if (score !== 0) {
         score = score - 5;
@@ -63,6 +76,16 @@ function displayMole(randomList){
 }
 //Remove mole once mole is clicked within 1 sec
 function whackMole() {
+  numberOfUserClicks++;
+
+  if (numberOfUserClicks === base) {
+    numberOfUserClicks = 0;
+    clearInterval(interval);
+    $('ul').empty();
+    base++;
+    generateBoard();
+  }
+
   $(this).removeClass('mole');
   updateScore();
 }
@@ -80,9 +103,5 @@ function updateScore() {
   }
 
 }
-function addMoreMoles(){
-  if (score===20) {
-    $('ul').append('<li></li>');
-    console.log('addmole');
-  }
-}
+
+// Increasing grid and mole logic

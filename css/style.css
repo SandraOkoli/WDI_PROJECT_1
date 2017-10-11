@@ -2,30 +2,27 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
 h1{
   text-align:center;
 }
 /* Grid */
 
 ul{
-  margin: 80px;
-  /*width: 400px;
-  height: 400px;*/
+  margin: 0 auto;
+  padding: 0;
 }
 
 li {
-  width: 300px;
-  height: 300px;
+  width: 96px;
+  height: 96px;
   border: 2px solid black;
   list-style: none;
   float: left;
-
-
-  /*padding: 100px;*/
-}
-
-.mole {
-  background-color: red;
+  margin: 2px;
 }
 
 .display-timer, .display-score {
@@ -42,6 +39,6 @@ li {
   text-align: center;
 }
 
-.missed {
-  color: red;
+.mole {
+  background: red;
 }
