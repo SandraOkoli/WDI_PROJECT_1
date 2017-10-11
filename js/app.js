@@ -7,17 +7,21 @@ let counter = 61;
 let score = 0;
 let base = 1;
 let numberOfUserClicks = 0;
+let level = 1;
 
+// const $start = $('.start-button');
 
 //Create setup function
 // The statements in the setup() function
 // execute once when the program begins
 function setup() {
   $('.start-button').on('click', startGame);
+  $('.levels').hide();
 }
-
 // Generate board at start game starting from one
 function startGame() {
+  $('.start-button').hide();
+  $('.levels').show();
   generateBoard();
 }
 //Create board multiply base by 100px
@@ -27,7 +31,6 @@ function generateBoard() {
     'height': `${base * 100}px`
   });
   // multiply base by base and incretment each iteration  (intial 1 x 1)
-
   for (var i = 0; i < base * base; i++) {
     $('ul').append('<li></li>');
   }
@@ -49,7 +52,8 @@ function timer(){
 
 function reset() {
   counter = 61;
-  $('.display-timer').html('Time: 0');
+  $('.display-timer').html('0');
+  $('.start-button').show();
 }
 
 //Get random list items
@@ -79,8 +83,6 @@ function displayMole(randomList){
 }
 //Remove mole once mole is clicked within 1 sec
 function whackMole() {
-
-
   $(this).removeClass('mole');
   updateScore();
   clicksPerBase();
@@ -90,11 +92,10 @@ function updateScore() {
   // If mole is clicked before timeout, update score by 10
   if (whackMole){
     score+=10;
-    console.log(score);
     $('.display-score').html(score).removeClass('missed');
   }
 }
-
+//Set number of user clicks to incretment by 1 per base
 function clicksPerBase() {
   numberOfUserClicks++;
 
@@ -104,5 +105,11 @@ function clicksPerBase() {
     $('ul').empty();
     base++;
     generateBoard();
+    levels();
   }
+}
+function levels() {
+  level++;
+  $('.display-level').html(level);
+  console.log(level);
 }
