@@ -45,7 +45,8 @@ li {
 }
 
 .selected {
-  border: 2px solid red;
+  border: 2px solid dodgerblue;
+  box-shadow: 8px 0px 25px 0px paleturquoise;
 }
 
 .mole {

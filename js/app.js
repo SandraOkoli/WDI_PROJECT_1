@@ -29,11 +29,15 @@ function selectMole(){
   });
 }
 function startGame() {
-  
+  if (moleChoice) {
+    $('.start-button').attr('disabled');
+  } else {
+    generateBoard();
+  }
   $('.start-button').hide();
   $('.select-mole').hide();
   $('.levels').show();
-  generateBoard();
+  // generateBoard();
 }
 //Create board multiply base by 100px
 function generateBoard() {
