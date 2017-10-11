@@ -11,16 +11,22 @@ let level = 1;
 
 // const $start = $('.start-button');
 
-//Create setup function
-// The statements in the setup() function
 // execute once when the program begins
 function setup() {
   $('.start-button').on('click', startGame);
   $('.levels').hide();
+  // selectMole();
 }
+// function selectMole(){
+//   $('.start-button').hide();
+//   $('.mole-1').on('click');
+//   console.log('clicked');
+//
+// }
 // Generate board at start game starting from one
 function startGame() {
   $('.start-button').hide();
+  $('.select-mole').hide();
   $('.levels').show();
   generateBoard();
 }
@@ -37,6 +43,7 @@ function generateBoard() {
 
   $lis = $('li');
   interval = setInterval(timer, 2000);
+
 }
 
 function timer(){
@@ -66,6 +73,7 @@ function getRandom(){
 function displayMole(randomList){
   const showMole = $(randomList).addClass('mole');
   $(showMole).one('click', whackMole);
+
 
   //remove mole and click event after 1 second
   setTimeout(function() {
@@ -111,5 +119,4 @@ function clicksPerBase() {
 function levels() {
   level++;
   $('.display-level').html(level);
-  console.log(level);
 }
