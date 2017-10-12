@@ -10,6 +10,7 @@ body {
 h1 {
   text-align: center;
   color: pink;
+  clear: both;
 }
 /* Grid */
 
@@ -28,11 +29,19 @@ li {
   border-radius: 50px;
 }
 
-.timer, .score-board {
-  text-align: center;
+.timer {
+  font-size: 20px;
+  padding: 20px;
+  float: left;
+  top: 0;
+  position: absolute;
+  clear: both;
+}
+.score-board {
   font-size: 20px;
   padding: 20px;
   float: right;
+  clear: both;
 }
 
 .start-button {
@@ -70,22 +79,6 @@ img {
   cursor: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwj1ifis9-rWAhWFXhQKHQGRBHgQjRwIBw&url=https%3A%2F%2Femojiisland.com%2Fproducts%2Fwaving-hand-sign-emoji-icon&psig=AOvVaw0Aw4coilYjaxSMkqT0c7J_&ust=1507892390199053"), auto;
 }
 
-.whacked {
-  animation-name: spin;
-  animation-duration: 1000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes spin {
-  from {
-    transform:rotate(0deg);
-  }
-  to {
-    transform:rotate(360deg);
-  }
-}
-
 .choose-characters {
   padding: 100px;
 }
@@ -93,4 +86,13 @@ img {
 .game-over{
   font-size: 60px;
   text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  clear:both;
+
+}
+
+.levels{
+  text-align: center;
+  font-size: 30px;
 }
