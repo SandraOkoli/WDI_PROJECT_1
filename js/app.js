@@ -3,14 +3,14 @@ $(setup);
 //Declare global variables
 let $lis = null;
 let interval = null;
-let counter = 61;
+let counter = 30;
 let score = 0;
 let base = 1;
 let numberOfUserClicks = 0;
 let level = 1;
 let moleChoice = null;
 let $chosenChar;
-let $audio = $('#audio');
+let $slap = $('#slap');
 
 // execute once when the program begins
 function setup() {
@@ -32,18 +32,14 @@ function selectMole() {
     $(`.${moleChoice}`).addClass('selected');
   });
 }
-// // function audio(){
-// //   $('.kim').on('click', function(e){
-// //     audio.src = 'sounds/kim-soundclip.mp3';
-// //     audio.play();
-// //   });
-//
-// }
 function displayMole(randomList){
   const showMole = $(randomList).addClass('mole selected');
   //Give mole chosen character src
   $('.mole').css('background-image', `url('${$chosenChar}')`);
   $(showMole).one('click', whackMole);
+
+
+
 
   //remove mole and click event after 1.5 seconds
   setTimeout(function() {
@@ -56,15 +52,15 @@ function displayMole(randomList){
         $('.display-score').html(score).addClass('missed');
       }
     }
-  },1500);
+  },1400);
 }
 //Remove mole once mole is clicked within 1.5 secs, update score, increase clicks per base
 function whackMole() {
   $(this).removeClass('mole selected');
-  // $audio.src = 'sounds/kim-soundclip.mp3';
-  // $audio.play();
+  $('#slap').get('0').play();
   updateScore();
   clicksPerBase();
+
 }
 function startGame() {
   $('.start-button').hide();
@@ -72,6 +68,7 @@ function startGame() {
   $('.levels').show();
   $('.timer').show();
   $('.score-board').show();
+  $('.game-over').hide();
   generateBoard();
 }
 //Create board multiply base
@@ -102,9 +99,11 @@ function timer(){
 }
 
 function reset() {
-  counter = 61;
+  counter = 30;
   $('.display-timer').html('0');
-  $('.start-button').show();
+  $('.start-button').text('Play Again').show();
+  $('.game-over').html('GAME OVER');
+  $('ul').empty();
 }
 
 //Get random list items

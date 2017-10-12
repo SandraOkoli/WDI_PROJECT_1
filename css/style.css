@@ -25,6 +25,7 @@ li {
   list-style: none;
   float: left;
   margin: 2px;
+  border-radius: 50px;
 }
 
 .timer, .score-board {
@@ -64,8 +65,8 @@ img {
   height: 250px;
 }
 
-.whack-mole {
-  cursor: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwj1ifis9-rWAhWFXhQKHQGRBHgQjRwIBw&url=https%3A%2F%2Femojiisland.com%2Fproducts%2Fwaving-hand-sign-emoji-icon&psig=AOvVaw0Aw4coilYjaxSMkqT0c7J_&ust=1507892390199053"), auto
+.grid:hover {
+  cursor: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwj1ifis9-rWAhWFXhQKHQGRBHgQjRwIBw&url=https%3A%2F%2Femojiisland.com%2Fproducts%2Fwaving-hand-sign-emoji-icon&psig=AOvVaw0Aw4coilYjaxSMkqT0c7J_&ust=1507892390199053"), auto;
 }
 
 .whacked {
@@ -82,4 +83,13 @@ img {
   to {
     transform:rotate(360deg);
   }
+}
+
+.choose-characters {
+  padding: 100px;
+}
+
+.game-over{
+  font-size: 60px;
+  text-align: center;
 }
