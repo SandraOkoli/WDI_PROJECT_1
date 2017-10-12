@@ -9,8 +9,7 @@ let base = 1;
 let numberOfUserClicks = 0;
 let level = 1;
 let moleChoice = null;
-
-// const $start = $('.start-button');
+let $chosenChar;
 
 // execute once when the program begins
 function setup() {
@@ -19,27 +18,51 @@ function setup() {
   selectMole();
 }
 
-// Generate board at start game starting from one
-function selectMole(){
-  $('.choose-characters img').on('click', function(){
+// Select a mole from the class
+function selectMole() {
+  $('.choose-characters img').on('click', function(e){
+    $chosenChar = $(e.target).attr('src');
     $('.choose-characters img').removeClass('selected');
+    // //Once div class image is selected add the image class to moleChoice
     moleChoice = $(this).attr('class');
-    console.log(moleChoice);
     $(`.${moleChoice}`).addClass('selected');
+    // if ($(moleChoice).hasClass('kim')) {
+    //   $('.mole').css('background-color', 'red');
+    //   console.log('.mole');
+    // }
   });
 }
+function displayMole(randomList){
+  const showMole = $(randomList).addClass('mole');
+  $('.mole').css('background-image', `url('${$chosenChar}')`);
+  $(showMole).one('click', whackMole);
+
+  //remove mole and click event after 1.5 seconds
+  setTimeout(function() {
+    $(randomList).off('click');
+    if ($(randomList).hasClass('mole')) {
+      // user missed mole
+      $(randomList).removeClass('mole');
+      if (score !== 0) {
+        score = score - 5;
+        $('.display-score').html(score).addClass('missed');
+      }
+    }
+  },1500);
+}
+//Remove mole once mole is clicked within 1.5 secs, update score, increase clicks per base
+function whackMole() {
+  $(this).removeClass('mole');
+  updateScore();
+  clicksPerBase();
+}
 function startGame() {
-  if (moleChoice) {
-    $('.start-button').attr('disabled');
-  } else {
-    generateBoard();
-  }
   $('.start-button').hide();
   $('.select-mole').hide();
   $('.levels').show();
-  // generateBoard();
+  generateBoard();
 }
-//Create board multiply base by 100px
+//Create board multiply base
 function generateBoard() {
   $('ul').css({
     'width': `${base * 100}px`,
@@ -54,7 +77,7 @@ function generateBoard() {
   interval = setInterval(timer, 2000);
 
 }
-
+//Countdown from 60-0 reset game
 function timer(){
   counter --;
   $('.display-timer').html(counter);
@@ -78,34 +101,32 @@ function getRandom(){
   displayMole(randomList);
 }
 //Add m
-function displayMole(randomList){
-  const showMole = $(randomList).addClass('mole');
-  // if ($('.mole-1').on('click', function(){
-  //   $('mole').addClass('mole-1');
-  // }
-  $(showMole).one('click', whackMole);
-
-
-  //remove mole and click event after 1 second
-  setTimeout(function() {
-    $(randomList).off('click');
-    //If Random list has class
-    if ($(randomList).hasClass('mole')) {
-      // user missed
-      $(randomList).removeClass('mole');
-      if (score !== 0) {
-        score = score - 5;
-        $('.display-score').html(score).addClass('missed');
-      }
-    }
-  },1500);
-}
-//Remove mole once mole is clicked within 1 sec
-function whackMole() {
-  $(this).removeClass('mole');
-  updateScore();
-  clicksPerBase();
-}
+// function displayMole(randomList){
+//   const showMole = $(randomList).addClass('mole')
+//   // const showMole = $(randomList).addClass('mole');
+//   $(showMole).one('click', whackMole);
+//
+//
+//   //remove mole and click event after 1.5 seconds
+//   setTimeout(function() {
+//     $(randomList).off('click');
+//     //If Random list has class
+//     if ($(randomList).hasClass('mole')) {
+//       // user missed
+//       $(randomList).removeClass('mole');
+//       if (score !== 0) {
+//         score = score - 5;
+//         $('.display-score').html(score).addClass('missed');
+//       }
+//     }
+//   },1500);
+// }
+// //Remove mole once mole it is clicked within 1.5 secs
+// function whackMole() {
+//   $(this).removeClass('mole');
+//   updateScore();
+//   clicksPerBase();
+// }
 
 function updateScore() {
   // If mole is clicked before timeout, update score by 10
