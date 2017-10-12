@@ -11,6 +11,7 @@ let level = 1;
 let moleChoice = null;
 let $chosenChar;
 let $slap = $('#slap');
+let $introSound = $('#kim-sound-clip');
 
 // execute once when the program begins
 function setup() {
@@ -18,6 +19,7 @@ function setup() {
   $('.levels').hide();
   $('.timer').hide();
   $('.score-board').hide();
+  $('#kim-sound-clip').get('0').play();
   selectMole();
 }
 
@@ -37,8 +39,6 @@ function displayMole(randomList){
   //Give mole chosen character src
   $('.mole').css('background-image', `url('${$chosenChar}')`);
   $(showMole).one('click', whackMole);
-
-
 
 
   //remove mole and click event after 1.5 seconds
@@ -68,7 +68,6 @@ function startGame() {
   $('.levels').show();
   $('.timer').show();
   $('.score-board').show();
-  $('.game-over').hide();
   generateBoard();
 }
 //Create board multiply base
