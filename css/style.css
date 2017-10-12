@@ -4,14 +4,16 @@
 
 body {
   font-family: 'Press Start 2P', cursive;
+  background: aliceblue;
 }
 
-h1{
-  text-align:center;
+h1 {
+  text-align: center;
+  color: pink;
 }
 /* Grid */
 
-ul{
+ul {
   margin: 0 auto;
   padding: 0;
 }
@@ -27,10 +29,9 @@ li {
 
 .timer, .score-board {
   text-align: center;
-  font-size: 50px;
+  font-size: 20px;
   padding: 20px;
 }
-
 
 .start-button {
   width: 100px;
@@ -50,13 +51,8 @@ li {
 }
 
 .mole {
-  /*background-image: url("http://is4.mzstatic.com/image/thumb/Purple62/v4/c4/c5/c6/c4c5c6ad-1c22-5316-bd22-e0797b155884/source/512x512bb.jpg");*/
   background-repeat: no-repeat;
   background-size: contain;
-}
-
-.mole-1 {
-  background-image: url("http://data.whicdn.com/images/246094008/large.png");
 }
 
 .missed {
@@ -66,4 +62,24 @@ li {
 img {
   width: 250px;
   height: 250px;
+}
+
+.whack-mole {
+  cursor: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwj1ifis9-rWAhWFXhQKHQGRBHgQjRwIBw&url=https%3A%2F%2Femojiisland.com%2Fproducts%2Fwaving-hand-sign-emoji-icon&psig=AOvVaw0Aw4coilYjaxSMkqT0c7J_&ust=1507892390199053"), auto
+}
+
+.whacked {
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:rotate(360deg);
+  }
 }
