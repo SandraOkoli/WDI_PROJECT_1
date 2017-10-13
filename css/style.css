@@ -7,6 +7,10 @@ body {
   background: aliceblue;
 }
 
+main {
+  margin: 50px;
+}
+
 h1 {
   text-align: center;
   color: pink;
@@ -32,19 +36,26 @@ li {
 .timer {
   font-size: 20px;
   padding: 20px;
-  float: left;
   top: 0;
+  left: 0;
   position: absolute;
-  clear: both;
 }
 .score-board {
   font-size: 20px;
   padding: 20px;
-  float: right;
-  clear: both;
+  top: 0;
+  right: 0;
+  position: absolute;
 }
 
-.start-button {
+.start-button{
+  text-align: center;
+  border: 4px solid #ccc;
+  font-size: 20px;
+  padding: 20px;
+}
+
+.char-button {
   text-align: center;
   border: 4px solid #ccc;
   font-size: 20px;
@@ -75,10 +86,6 @@ img {
   height: 250px;
 }
 
-.grid:hover {
-  cursor: url("https://www.google.co.uk/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwj1ifis9-rWAhWFXhQKHQGRBHgQjRwIBw&url=https%3A%2F%2Femojiisland.com%2Fproducts%2Fwaving-hand-sign-emoji-icon&psig=AOvVaw0Aw4coilYjaxSMkqT0c7J_&ust=1507892390199053"), auto;
-}
-
 .choose-characters {
   padding: 100px;
 }
@@ -95,4 +102,5 @@ img {
 .levels{
   text-align: center;
   font-size: 30px;
+  margin: 50px;
 }

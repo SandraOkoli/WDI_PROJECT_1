@@ -3,25 +3,24 @@ $(setup);
 //Declare global variables
 let $lis = null;
 let interval = null;
-let counter = 5;
+let counter = 30;
 let score = 0;
 let base = 1;
 let numberOfUserClicks = 0;
 let level = 1;
 let moleChoice = null;
 let $chosenChar;
-let $slap = $('#slap');
-let $introSound = $('#kim-sound-clip');
 let $gameOver = null;
+let $introSound = null;
 
 // execute once when the program begins
 function setup() {
+  let $slap = $('#slap');
+  $introSound = $('#kim-sound-clip');
   $('.start-button').on('click', startGame);
   $('.levels').hide();
   $('.timer').hide();
   $('.score-board').hide();
-  $gameOver = $('#game-over-sound');
-  $('#kim-sound-clip').get('0').play();
   selectMole();
 }
 
@@ -43,26 +42,39 @@ function timer(){
   if (counter===0){
     clearInterval(interval);
     reset();
-    // $('#game-over-sound').get('0').play();
   }
   getRandom();
 }
 
-//Create board multiply base
+//Create board multiply base by itself
 function generateBoard() {
   $('ul').css({
     'width': `${base * 100}px`,
     'height': `${base * 100}px`
   });
-  // multiply base by base and incretment each iteration  (intial 1 x 1)
+  // multiply base by base and incretment each iteration (intial 1 x 1)
   for (var i = 0; i < base * base; i++) {
     $('ul').append('<li></li>');
+    console.log(base);
   }
   $lis = $('li');
   interval = setInterval(timer, 2000);
-
 }
 
+//Set number of user clicks to incretment per base
+function clicksPerBase() {
+  numberOfUserClicks++;
+
+  if (numberOfUserClicks === base && base < 5) {
+    numberOfUserClicks = 0;
+    clearInterval(interval);
+    $('ul').empty();
+    base++;
+    generateBoard();
+    levels();
+  }
+
+}
 //Get random list items
 function getRandom(){
   const randomList = $lis[Math.floor(Math.random()*$lis.length)];
@@ -71,6 +83,8 @@ function getRandom(){
 
 // Select a mole from the class
 function selectMole() {
+  $introSound.get('0').play();
+  $('.game-over').text('GAME OVER').hide();
   $('.choose-characters img').on('click', function(e){
     //Create variable to target the image source
     $chosenChar = $(e.target).attr('src');
@@ -97,26 +111,14 @@ function displayMole(randomList){
         $('.display-score').html(score).addClass('missed');
       }
     }
-  },1400);
+  },1300);
 }
-//Remove mole once mole is clicked within 1.5 secs, update score, increase clicks per base
+//Remove mole once mole is clicked within 1.3 secs, update score, increase clicks per base
 function whackMole() {
   $(this).removeClass('mole selected');
   $('#slap').get('0').play();
   updateScore();
   clicksPerBase();
-}
-
-function reset() {
-  new Audio('sounds/game-over.mp3').play();
-  $gameOver.get('0').play();
-  counter = 5;
-  base = 1;
-  $('.display-timer').html('0');
-  $('.start-button').text('Play Again').show();
-  $('.game-over').text('GAME OVER');
-  $('.game-over').text('Change Doll?');
-  $('ul').empty();
 }
 
 function updateScore() {
@@ -126,20 +128,18 @@ function updateScore() {
     $('.display-score').html(score).removeClass('missed');
   }
 }
-//Set number of user clicks to incretment by 1 per base
-function clicksPerBase() {
-  numberOfUserClicks++;
 
-  if (numberOfUserClicks === base) {
-    numberOfUserClicks = 0;
-    clearInterval(interval);
-    $('ul').empty();
-    base++;
-    generateBoard();
-    levels();
-  }
-}
 function levels() {
   level++;
   $('.display-level').html(level);
+}
+
+function reset() {
+  counter = 30;
+  base = 1;
+  level = 1;
+  $('.display-timer').html('0');
+  $('.start-button').text('Play Again').show();
+  $('.game-over').text('GAME OVER').show();
+  $('ul').empty();
 }
