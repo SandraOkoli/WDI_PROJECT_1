@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  cursor: url("images/cursor.png");
 }
 
 body {
@@ -48,19 +49,20 @@ li {
   position: absolute;
 }
 
-.start-button{
+.buttons{
   text-align: center;
-  border: 4px solid #ccc;
-  font-size: 20px;
-  padding: 20px;
 }
 
-.char-button {
-  text-align: center;
-  border: 4px solid #ccc;
-  font-size: 20px;
+.start-button, .character-button {
+  font-family: inherit;
+  border: 3px solid #ccc;
+  font-size: 15px;
   padding: 20px;
+  vertical-align: middle;
+  display: inline-block;
+  background: none;
 }
+
 
 .select-mole {
   text-align: center;
