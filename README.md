@@ -1,5 +1,29 @@
-# WDI_PROJECT_1
 
+
+# WDI_PROJECT_1 - Slap a Doll
+
+In my first project of my Web Development Immersive course with General Assembly, I was given the brief to create a game using the skills that we learned thus far.
+
+I wanted to choose a game that would consolidate everything we'd learned in the first two weeks.
+After researching games I decided upon 'Whack a Mole' but with my own spin. Building the basic version of the game was imperative to me as I wanted to ensure that the game logic was working on a smaller scale prior to making the game more interesting by adding levels, setting intervals, styling amongst other things. Once I achieved this I was able to get creative and 'Slap a Doll' was birthed which features members of the Kardashians.  Building this game really gave me the opportunity to practice using jQuery and DOM manipulation which I gravitated towards during the first weeks of the course.
+
+Technologies used
+
+jQuery
+DOM manipulation
+
+
+Slap a Doll is only available locally, screenshots are provided below
+
+
+
+Screenshots
+
+
+
+
+
+Psuedo code
 //Whack a mole
 
 HTML
