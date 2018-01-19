@@ -4,12 +4,20 @@
 #WDI30 PROJECT 1 - Slap a Doll
 
 
+<<<<<<< HEAD
 For my first project of the Web Development Immersive course with General Assembly, I built a game using Javascript, jQuery, HTML5, CSS3. 'Slap a Doll' featuring the Kardashians is a humourous take on the popular arcade game Whac-A-Mole invented in the 1970s by Aaron Fechter.
+=======
+For my first project of the Web Development Immersive course with General Assembly, I built a game using Javascript, jQuery, HTML5, CSS3. 'Slap a Doll' featuring the Kardashians is a humorous take on the popular arcade game Whac-A-Mole invented in the 1970s by Aaron Fechter.
+>>>>>>> c26b4ee24d6b9316980ae76b0938ce55b45f414b
 
 
 ##Concept
 
+<<<<<<< HEAD
 The idea behind the game is simple and highly satisfying. Users have the option of choosing between three Kardashians to feature in the game. Using mouse clicks, the user must slap a Kardashian as they appear before the time runs out. Each time a Kardashian is successfully hit, the score is incremented by 10 points. If a user fails to click on time, if the score is greater than 0 the score is decremented by 5 points. The game gets faster each time the user goes up a level. 
+=======
+The idea behind the game is simple and highly satisfying. Users have the option of choosing between three Kardashians to feature in the game. Using mouse clicks, the user must slap a Kardashian as they appear before the time runs out. Each time a Kardashian is successfully hit, the score is incremented by 10 points. If a user fails to click on time, if the score is greater than 0 the score is decremented by 5 points. The game gets faster each time the user goes up a level.
+>>>>>>> c26b4ee24d6b9316980ae76b0938ce55b45f414b
 
 ##Technologies/Libraries
 
@@ -46,7 +54,11 @@ https://warm-river-92816.herokuapp.com/
 ##What went well
 Initially, I created four list items and created a box with css, using math floor and math random to select random li's from an array which were displayed in red. I then created the functionality to Whack a doll, followed by the set timeout functionality.
 
+<<<<<<< HEAD
 After succesfully getting the game to work in it's simpliest form. I was able to expand/ammend on what I had already written.
+=======
+After successfully getting the game to work in it's simplest form. I was able to expand/amend on what I had already written.
+>>>>>>> c26b4ee24d6b9316980ae76b0938ce55b45f414b
 
 This vastly improved performance and playability of the game.
 
@@ -54,6 +66,7 @@ This vastly improved performance and playability of the game.
 ##Challenges
 The grid logic was a great problem to solve. The way I implemented this was as follows:
 
+<<<<<<< HEAD
 To begin with, a grid is created. The grid is an Unordered List (UL) initally consisting of 1 List Item (LI). The UL is given a width and height of ``${base * 100}px`` (using the JQuery .css() method). I declared base as a global variable as I needed to reuse this in multiple functions.
 
 Using a for loop I multiplied the base by base and incretmented each iteration. With the .append method I was able to increase the grid size by adding a list item each iteration.
@@ -63,6 +76,17 @@ Using a for loop I multiplied the base by base and incretmented each iteration. 
     }` 
 
 As I assigned my counter to 30, it was fairly easy for users to pass levels, this is where I encountered a problem with the grid size which began a contionous loop until the time ran out. This effected the performance, and UX of the game as the grid got bigger users were required to scroll up and down the page to see/hit a doll. I fixed this by creating a clicksPerBase function which handled the logic to set the number of user clicks to equal the current base. I then added a conditional statement to ensure that lis would only be appended to the grid if the value of base was less 5.
+=======
+To begin with, a grid is created. The grid is an Unordered List (UL) initially consisting of 1 List Item (LI). The UL is given a width and height of ``${base * 100}px`` (using the jQuery .css() method). I declared base as a global variable as I needed to reuse this in multiple functions.
+
+Using a for loop I multiplied the base by base and incremented each iteration. With the .append method I was able to increase the grid size by adding a list item each iteration.
+`for (var i = 0; i < base * base; i++) {
+      $('ul').append('<li></li>');
+      console.log(base);
+    }`
+
+As I assigned my counter to 30, it was fairly easy for users to pass levels, this is where I encountered a problem with the grid size which began a continuous loop until the time ran out. This effected the performance, and UX of the game as the grid got bigger users were required to scroll up and down the page to see/hit a doll. I fixed this by creating a clicksPerBase function which handled the logic to set the number of user clicks to equal the current base. I then added a conditional statement to ensure that lis would only be appended to the grid if the value of base was less 5.
+>>>>>>> c26b4ee24d6b9316980ae76b0938ce55b45f414b
 
 
 ![](/Users/sandraokoli/Desktop/Screen Shot 2018-01-15 at 13.24.52.png)
@@ -78,4 +102,8 @@ I would implement the following features in this game:
 
 
 ##Final thoughts
+<<<<<<< HEAD
 I had a lot of fun making and then playing this game! It was a great first project as I became familiar with JQuery documentation and experimented further with CSS. I am proud with the resultant playability of the game and also the final UI.
+=======
+I had a lot of fun making and then playing this game! It was a great first project as I became familiar with JQuery documentation and experimented further with CSS. I am proud with the resultant playability of the game and also the final UI.
+>>>>>>> c26b4ee24d6b9316980ae76b0938ce55b45f414b
