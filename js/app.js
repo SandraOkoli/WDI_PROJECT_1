@@ -8,7 +8,7 @@ let score = 0;
 let base = 1;
 let numberOfUserClicks = 0;
 let level = 1;
-let moleChoice = null;
+let dollChoice = null;
 let $chosenChar;
 
 // execute once when the program begins
@@ -18,25 +18,27 @@ function setup() {
   const $startButton = $('.start-button');
   const $characterButton = $('.character-button');
   const $levels = $('.levels');
+  const $displayLevel= $('.display-level');
   const $timer = $('.timer');
   const $scoreBoard = $('.score-board');
   const $displayTimer = $('.display-timer');
-  const $selectMole = $('.select-mole');
+  const $selectDoll = $('.select-doll');
   const $gameOver = $('.game-over');
   $startButton.on('click', startGame);
   $levels.hide();
   $characterButton.hide();
   $timer.hide();
   $scoreBoard.hide();
-  selectMole();
+  selectDoll();
 
   function startGame() {
     $startButton.hide();
-    $selectMole.hide();
+    $selectDoll.hide();
     $levels.show();
     $timer.show();
     $scoreBoard.show();
     $gameOver.text('GAME OVER').hide();
+    $characterButton.text('GAME OVER').hide();
     generateBoard();
   }
 
@@ -84,35 +86,35 @@ function setup() {
   //Get random list items
   function getRandom(){
     const randomList = $lis[Math.floor(Math.random()*$lis.length)];
-    displayMole(randomList);
+    displayDoll(randomList);
   }
 
-  // Select a mole from the class
-  function selectMole() {
+  // Select a doll from the class
+  function selectDoll() {
     $introSound.get('0').play();
     $gameOver.text('GAME OVER').hide();
     $('.choose-characters img').on('click', function(e){
       //Create variable to target the image source
       $chosenChar = $(e.target).attr('src');
       $('.choose-characters img').removeClass('selected');
-      //Once div class image is selected add the image class to moleChoice
-      moleChoice = $(this).attr('class');
-      $(`.${moleChoice}`).addClass('selected');
+      //Once div class image is selected add the image class to dollChoice
+      dollChoice = $(this).attr('class');
+      $(`.${dollChoice}`).addClass('selected');
     });
   }
-  function displayMole(randomList){
-    const showMole = $(randomList).addClass('mole selected');
-    //Give mole chosen character src
-    $('.mole').css('background-image', `url('${$chosenChar}')`);
-    $(showMole).one('click', whackMole);
+  function displayDoll(randomList){
+    const showDoll = $(randomList).addClass('doll selected');
+    //Give doll chosen character src
+    $('.doll').css('background-image', `url('${$chosenChar}')`);
+    $(showDoll).one('click', whackDoll);
 
-    //remove mole and click event after 1.3 seconds
+    //remove doll and click event after 1.3 seconds
     setTimeout(function() {
       $(randomList).off('click');
-      if ($(randomList).hasClass('mole')) {
-        // user missed mole
-        $(randomList).removeClass('mole selected');
-        // If mole is not 0, decrease score by 5
+      if ($(randomList).hasClass('doll')) {
+        // user missed doll
+        $(randomList).removeClass('doll selected');
+        // If score is not 0, decrease score by 5
         if (score !== 0) {
           score = score - 5;
           $('.display-score').html(score).addClass('missed');
@@ -120,17 +122,17 @@ function setup() {
       }
     },1300);
   }
-  //Remove mole once mole is clicked within 1.3 secs, update score, increase clicks per base
-  function whackMole() {
-    $(this).removeClass('mole selected');
+  //Remove doll once doll is clicked within 1.3 secs, play sound effect, update score, increase clicks per base
+  function whackDoll() {
+    $(this).removeClass('doll selected');
     $slap.get('0').play();
     updateScore();
     clicksPerBase();
   }
 
   function updateScore() {
-    // If mole is clicked before timeout, update score by 10
-    if (whackMole){
+    // If doll is clicked before timeout, update score by 10
+    if (whackDoll){
       score+=10;
       $('.display-score').html(score).removeClass('missed');
     }
@@ -138,16 +140,17 @@ function setup() {
 
   function levels() {
     level++;
-    $('.display-level').html(level);
+    $displayLevel.html(level);
   }
 
   function reset() {
     counter = 30;
     base = 1;
-    level = 1;
     $displayTimer.html('0');
+    $displayLevel.html('1');
     $startButton.text('Play Again').show();
     $gameOver.text('GAME OVER').show();
     $('ul').empty();
+
   }
 }
