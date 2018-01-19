@@ -16,7 +16,7 @@ function setup() {
   const $slap = $('#slap');
   const $introSound = $('#kim-sound-clip');
   const $startButton = $('.start-button');
-  const $characterButton = $('.character-button')
+  const $characterButton = $('.character-button');
   const $levels = $('.levels');
   const $timer = $('.timer');
   const $scoreBoard = $('.score-board');
@@ -148,7 +148,6 @@ function setup() {
     $displayTimer.html('0');
     $startButton.text('Play Again').show();
     $gameOver.text('GAME OVER').show();
-    $characterButton.on('click', selectMole).show();
     $('ul').empty();
   }
 }
