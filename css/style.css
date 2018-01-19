@@ -1,11 +1,13 @@
 * {
   box-sizing: border-box;
-  cursor: url("images/cursor.png");
+  /* cursor: url("images/cursor.png"); */
 }
 
 body {
   font-family: 'Press Start 2P', cursive;
-  background: #d2edf9;
+  background-color: #FFDEE9;
+  background-image: linear-gradient(0deg, #FFDEE9 25%, #B5FFFC 100%);
+  background-repeat: no-repeat;
 }
 
 main {
@@ -16,6 +18,11 @@ h1 {
   text-align: center;
   color: pink;
   clear: both;
+  margin-top: 50px;
+}
+
+h2 {
+  color: white;
 }
 /* Grid */
 
@@ -52,29 +59,33 @@ li {
 .buttons{
   text-align: center;
 }
+.start{
+  text-align: center;
+}
 
 .start-button, .character-button {
+  background: none;
+  border: 3px solid white;
+  border-radius: 50px;
+  display: inline-block;
   font-family: inherit;
-  border: 3px solid #ccc;
   font-size: 15px;
   padding: 20px;
   vertical-align: middle;
-  display: inline-block;
-  background: none;
 }
 
 
-.select-mole {
+.select-doll {
   text-align: center;
   padding-right: 50px;
 }
 
 .selected {
   border: 2px solid dodgerblue;
-  box-shadow: 8px 0px 25px 0px paleturquoise;
+  box-shadow: 8px 0 25px 0 paleturquoise;
 }
 
-.mole {
+.doll {
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -84,8 +95,8 @@ li {
 }
 
 img {
-  width: 250px;
   height: 250px;
+  width: 250px;
 }
 
 .choose-characters {
@@ -93,16 +104,16 @@ img {
 }
 
 .game-over{
+  clear:both;
   font-size: 60px;
-  text-align: center;
   margin: 0 auto;
   padding: 0;
-  clear:both;
-
+  text-align: center;
+  width: 100%;
 }
 
-.levels{
-  text-align: center;
+.levels {
   font-size: 30px;
   margin: 50px;
+  text-align: center;
 }
